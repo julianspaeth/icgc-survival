@@ -36,3 +36,26 @@ def extract_gene_affected_counts(ssm_df):
 
     return feature_df
 
+
+def extract_expression_features(expr_df, gene_model, type):
+    expr_df = expr_df[["icgc_donor_id", "gene_model", "gene_id", type]]
+    expr_df = expr_df[expr_df["gene_model"] == gene_model]
+    expr_df = expr_df.drop("gene_model", axis=1)
+    expr_df[type] = expr_df[type].astype("float16")
+    expr_df = expr_df.drop_duplicates()
+
+    print(expr_df.shape)
+
+    donors = expr_df["icgc_donor_id"].unique()
+    genes = expr_df["gene_id"].unique()
+    helper_list = [list(a) for a in
+                   zip(expr_df["icgc_donor_id"], expr_df["gene_id"], expr_df[type])]
+    feature_df = pd.DataFrame(0, index=donors, columns=genes, dtype="float16")
+    for expr in helper_list:
+        feature_df.at[expr[0], expr[1]] = expr[2]
+
+    return feature_df
+
+
+
+

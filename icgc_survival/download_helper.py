@@ -90,6 +90,3 @@ def download_donor_summary(token, filetype, release, keep_file=False):
     )
 
     return download_data_release(params, cookies, filename, keep_file)
-
-
-
