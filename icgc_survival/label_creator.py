@@ -1,5 +1,12 @@
-def extract_survival_labels(features, labels):
-    donors = labels.set_index("icgc_donor_id")
+def extract_survival_labels(features, donors):
+    """
+    Return corresponding survival labels for the given feature matrix.
+    :param features: Feature matrix
+    :param donors: Donor file containing all ICGC donors or at least those that are present in the feature matrix.
+    :return: Survival labels of the donors
+    :return: Feature matrix of the donors
+    """
+    donors = donors.set_index("icgc_donor_id")
     feature_donors = features.index
     labels = donors.loc[feature_donors, ["donor_survival_time", "donor_vital_status"]]
     labels["donor_survival_time"] = labels["donor_survival_time"]/365
