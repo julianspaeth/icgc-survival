@@ -43,7 +43,6 @@ def extract_gene_affected_counts(ssm_df):
         ssm_df = ssm_df[["icgc_donor_id", "chromosome"]].reset_index()
         ssm_df = ssm_df.drop_duplicates()
     ssm_df = ssm_df.groupby(["icgc_donor_id", "gene_affected"]).count().reset_index()
-    print(ssm_df)
     donors = ssm_df["icgc_donor_id"].unique()
     genes = ssm_df["gene_affected"].unique()
     if "icgc_mutation_id" in ssm_df.columns:
@@ -72,8 +71,6 @@ def extract_expression_features(expr_df, gene_model, type):
     expr_df = expr_df.drop("gene_model", axis=1)
     expr_df[type] = expr_df[type].astype("float16")
     expr_df = expr_df.drop_duplicates()
-
-    print(expr_df.shape)
 
     donors = expr_df["icgc_donor_id"].unique()
     genes = expr_df["gene_id"].unique()
