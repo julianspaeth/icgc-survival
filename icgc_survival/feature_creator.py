@@ -76,7 +76,7 @@ def extract_expression_features(expr_df, gene_model, type):
     genes = expr_df["gene_id"].unique()
     helper_list = [list(a) for a in
                    zip(expr_df["icgc_donor_id"], expr_df["gene_id"], expr_df[type])]
-    feature_df = pd.DataFrame(0, index=donors, columns=genes, dtype="float16")
+    feature_df = pd.DataFrame(np.nan, index=donors, columns=genes, dtype="float16")
     for expr in helper_list:
         feature_df.at[expr[0], expr[1]] = expr[2]
 

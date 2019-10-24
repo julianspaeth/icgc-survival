@@ -6,7 +6,7 @@ with open('README.md') as f:
 setup(
   name='icgc_survival',         # How you named your package folder (MyLib)
   packages=['icgc_survival'],   # Chose the same as "name"
-  version='0.2.1',      # Start with a small number and increase it with every change you make
+  version='0.2.3',      # Start with a small number and increase it with every change you make
   license="MIT License",        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   long_description=readme,
   long_description_content_type="text/markdown",
