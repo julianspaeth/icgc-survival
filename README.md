@@ -1,4 +1,4 @@
-# Random Survival Forest
+# ICGC Survival
 
 The ICGC-survival package provides an easy oppurtinity to perform survival prediction on ICGC datasets.
 
